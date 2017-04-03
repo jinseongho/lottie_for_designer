@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">lottie_for_designer</string>
+
+    <string name="message_error_01">File Not Found</string>
+    <string name="message_error_02">choose json file</string>
 </resources>

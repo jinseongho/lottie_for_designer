@@ -94,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
                                     });
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
-                            Toast.makeText(MainActivity.this, "파일이 없다 새끼소나야", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, getString(R.string.message_error_01), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(MainActivity.this, "json 파일 눌러라 새끼소나야", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, getString(R.string.message_error_02), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
