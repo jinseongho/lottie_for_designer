@@ -126,7 +126,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        mLlRoot.setBackground(ContextCompat.getDrawable(this, android.R.color.white));
+        v.setSelected(!v.isSelected());
+        mLlRoot.setBackground(ContextCompat.getDrawable(this, v.isSelected() ? android.R.color.white : android.R.color.black));
     }
 
     //    @SuppressLint("NewApi")
