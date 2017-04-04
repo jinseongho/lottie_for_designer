@@ -6,11 +6,13 @@ import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -28,10 +30,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private final int REQUEST_FILE = 1004;
 
+    @BindView(R.id.root)
+    RelativeLayout mLlRoot;
     @BindView(R.id.animation_view)
     LottieAnimationView mAnimationView;
     @BindView(R.id.bg_btn)
     ImageButton mIbBgBtn;
+
 
     private ActivityMainBinding mBinding;
 
@@ -41,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         ButterKnife.bind(this);
         mIbBgBtn.setOnClickListener(this);
-        
     }
 
     @Override
@@ -122,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
+        mLlRoot.setBackground(ContextCompat.getDrawable(this, android.R.color.white));
     }
 
     //    @SuppressLint("NewApi")
