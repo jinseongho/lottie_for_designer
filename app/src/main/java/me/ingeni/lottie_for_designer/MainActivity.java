@@ -14,7 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -27,6 +27,7 @@ import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnTextChanged;
 import me.ingeni.lottie_for_designer.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,9 +35,13 @@ public class MainActivity extends AppCompatActivity {
     private final int REQUEST_FILE = 1004;
 
     @BindView(R.id.root)
-    RelativeLayout mLlRoot;
+    RelativeLayout mRlRoot;
+    @BindView(R.id.root2)
+    RelativeLayout mRlRoot2;
     @BindView(R.id.animation_view)
     LottieAnimationView mAnimationView;
+    @BindView(R.id.button_control_layout)
+    LinearLayout mLlTestButtonControlLayout;
 
     private ActivityMainBinding mBinding;
 
@@ -64,12 +69,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             case R.id.menu_button_test: {
-                onDrawTestButton();
+                onDrawTestButton((int) dpToPx(46), (int) dpToPx(46));
                 return true;
             }
             case R.id.menu_background: {
-                mLlRoot.setSelected(!mLlRoot.isSelected());
-                mLlRoot.setBackground(ContextCompat.getDrawable(this, mLlRoot.isSelected() ? android.R.color.white : android.R.color.black));
+                mRlRoot.setSelected(!mRlRoot.isSelected());
+                mRlRoot.setBackground(ContextCompat.getDrawable(this, mRlRoot.isSelected() ? android.R.color.white : android.R.color.black));
                 return true;
             }
         }
@@ -132,11 +137,22 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    private void onDrawTestButton() {
-        mLlRoot.removeAllViews();
+    @OnTextChanged(R.id.test_button_width_edit)
+    public void onButtonWidthTextChagned(CharSequence s) {
+        onDrawTestButton(Integer.valueOf(s.toString()), Integer.valueOf(s.toString()));
+    }
+
+    @OnTextChanged(R.id.test_button_height_edit)
+    public void onButtonHeightTextChagned(CharSequence s) {
+        onDrawTestButton(Integer.valueOf(s.toString()), Integer.valueOf(s.toString()));
+    }
+
+    private void onDrawTestButton(int width, int height) {
+        mRlRoot2.removeAllViews();
+        mLlTestButtonControlLayout.setVisibility(View.VISIBLE);
         RelativeLayout buttonLView = new RelativeLayout(this);
         RelativeLayout.LayoutParams buttonParams =
-                new RelativeLayout.LayoutParams((int) dpToPx(46), (int) dpToPx(46));
+                new RelativeLayout.LayoutParams(width, height);
         buttonParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
         buttonLView.setLayoutParams(buttonParams);
 
@@ -155,8 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 mAnimationView.loop(false);
             }
         });
-
-        mLlRoot.addView(buttonLView);
+        mRlRoot2.addView(buttonLView);
     }
 
     private float dpToPx(float dp) {
