@@ -1,8 +1,11 @@
 package me.ingeni.lottie_for_designer;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
@@ -10,6 +13,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             case R.id.menu_button_test: {
-
+                onDrawTestButton();
                 return true;
             }
             case R.id.menu_background: {
@@ -105,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         mAnimationView.playAnimation();
     }
 
-    public String getFileName(Uri uri) {
+    private String getFileName(Uri uri) {
         String result = null;
         if (uri.getScheme().equals("content")) {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
@@ -125,6 +130,37 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return result;
+    }
+
+    private void onDrawTestButton() {
+        mLlRoot.removeAllViews();
+        RelativeLayout buttonLView = new RelativeLayout(this);
+        RelativeLayout.LayoutParams buttonParams =
+                new RelativeLayout.LayoutParams((int) dpToPx(46), (int) dpToPx(46));
+        buttonParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+        buttonLView.setLayoutParams(buttonParams);
+
+        GradientDrawable gd = new GradientDrawable();
+        gd.setColor(Color.RED);
+        gd.setCornerRadius(10);
+        gd.setStroke(2, Color.WHITE);
+        buttonLView.setBackground(gd);
+
+        buttonLView.addView(mAnimationView);
+        mAnimationView.cancelAnimation();
+        buttonLView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAnimationView.playAnimation();
+                mAnimationView.loop(false);
+            }
+        });
+
+        mLlRoot.addView(buttonLView);
+    }
+
+    private float dpToPx(float dp) {
+        return dp * Resources.getSystem().getDisplayMetrics().density;
     }
 
     //    @SuppressLint("NewApi")
