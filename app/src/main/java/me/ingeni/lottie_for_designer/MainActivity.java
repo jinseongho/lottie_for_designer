@@ -10,8 +10,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -26,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.ingeni.lottie_for_designer.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private final int REQUEST_FILE = 1004;
 
@@ -34,9 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RelativeLayout mLlRoot;
     @BindView(R.id.animation_view)
     LottieAnimationView mAnimationView;
-    @BindView(R.id.bg_btn)
-    ImageButton mIbBgBtn;
-
 
     private ActivityMainBinding mBinding;
 
@@ -45,12 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         ButterKnife.bind(this);
-        mIbBgBtn.setOnClickListener(this);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.upload, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -62,6 +56,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 importFileIntent.setType("*/*");
                 importFileIntent.addCategory(Intent.CATEGORY_OPENABLE);
                 startActivityForResult(importFileIntent, REQUEST_FILE);
+                return true;
+            }
+            case R.id.menu_button_test: {
+
+                return true;
+            }
+            case R.id.menu_background: {
+                mLlRoot.setSelected(!mLlRoot.isSelected());
+                mLlRoot.setBackground(ContextCompat.getDrawable(this, mLlRoot.isSelected() ? android.R.color.white : android.R.color.black));
                 return true;
             }
         }
@@ -122,12 +125,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         return result;
-    }
-
-    @Override
-    public void onClick(View v) {
-        v.setSelected(!v.isSelected());
-        mLlRoot.setBackground(ContextCompat.getDrawable(this, v.isSelected() ? android.R.color.white : android.R.color.black));
     }
 
     //    @SuppressLint("NewApi")

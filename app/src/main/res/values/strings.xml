@@ -3,4 +3,8 @@
 
     <string name="message_error_01">File Not Found</string>
     <string name="message_error_02">choose json file</string>
+
+    <string name="menu_01">choose file</string>
+    <string name="menu_02">button test</string>
+    <string name="menu_03">change background</string>
 </resources>

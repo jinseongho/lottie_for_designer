@@ -15,29 +15,29 @@
         android:layout_height="match_parent"
         android:background="@android:color/black">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animation_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/test_button_container"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/rounded_button"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:text="@{jsonData.fileName}"
             android:textColor="@color/colorAccent"
             tools:text="name" />
-
-
-        <ImageButton
-            android:id="@+id/bg_btn"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="bottom"
-            android:background="@android:color/transparent"
-            android:src="@color/colorAccent" />
-
     </RelativeLayout>
 </layout>
