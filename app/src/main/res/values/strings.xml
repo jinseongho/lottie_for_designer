@@ -6,5 +6,6 @@
 
     <string name="menu_01">choose file</string>
     <string name="menu_02">button test</string>
-    <string name="menu_03">change background</string>
+    <string name="menu_03">animation preview</string>
+    <string name="menu_04">change background</string>
 </resources>

@@ -9,8 +9,13 @@
         android:id="@+id/menu_button_test"
         android:title="@string/menu_02"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_animation_preview"
+        android:title="@string/menu_03"
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_background"
-        android:title="@string/menu_03"
+        android:title="@string/menu_04"
         app:showAsAction="never" />
 </menu>

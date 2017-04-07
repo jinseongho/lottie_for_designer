@@ -75,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
                 onDrawTestButton((int) dpToPx(46), (int) dpToPx(46));
                 return true;
             }
+
+            case R.id.menu_animation_preview: {
+//                mRlRoot2.removeAllViews();
+//                mLlTestButtonControlLayout.setVisibility(View.GONE);
+//                mAnimationView = new LottieAnimationView(this);
+                break;
+            }
+
             case R.id.menu_background: {
                 mRlRoot.setSelected(!mRlRoot.isSelected());
                 mRlRoot.setBackground(ContextCompat.getDrawable(this, mRlRoot.isSelected() ? android.R.color.white : android.R.color.black));
