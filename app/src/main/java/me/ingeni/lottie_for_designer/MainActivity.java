@@ -12,7 +12,6 @@ import android.provider.OpenableColumns;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -196,83 +195,5 @@ public class MainActivity extends AppCompatActivity {
     private float dpToPx(float dp) {
         return dp * Resources.getSystem().getDisplayMetrics().density;
     }
-
-    //    @SuppressLint("NewApi")
-//    public String getRealPathFromURI_API19(Context context, Uri uri) {
-//        String filePath = "";
-//        String wholeID = DocumentsContract.getDocumentId(uri);
-//
-//        // Split at colon, use second item in the array
-//        String id = wholeID.split(":")[1];
-//
-//        String[] column = {MediaStore.Images.Media.DATA};
-//
-//        // where id is equal to
-//        String sel = MediaStore.Images.Media._ID + "=?";
-//
-//        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                column, sel, new String[]{id}, null);
-//
-//        int columnIndex = cursor.getColumnIndex(column[0]);
-//
-//        if (cursor.moveToFirst()) {
-//            filePath = cursor.getString(columnIndex);
-//        }
-//        cursor.close();
-//        return filePath;
-//    }
-//
-//
-//    @SuppressLint("NewApi")
-//    public String getRealPathFromURI_API11to18(Context context, Uri contentUri) {
-//        String[] proj = {MediaStore.Images.Media.DATA};
-//        String result = null;
-//
-//        CursorLoader cursorLoader = new CursorLoader(
-//                context,
-//                contentUri, proj, null, null, null);
-//        Cursor cursor = cursorLoader.loadInBackground();
-//
-//        if (cursor != null) {
-//            int column_index =
-//                    cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//            cursor.moveToFirst();
-//            result = cursor.getString(column_index);
-//        }
-//        return result;
-//    }
-//
-//    public String getRealPathFromURI_BelowAPI11(Context context, Uri contentUri) {
-//        String[] proj = {MediaStore.Images.Media.DATA};
-//        Cursor cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
-//        int column_index
-//                = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//        cursor.moveToFirst();
-//        return cursor.getString(column_index);
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-////        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-////        }
-//    }
-//
-//    public boolean isStoragePermissionGranted() {
-//        if (Build.VERSION.SDK_INT >= 23) {
-//            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-//                    == PackageManager.PERMISSION_GRANTED &&
-//                    checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//                            == PackageManager.PERMISSION_GRANTED) {
-//                return true;
-//            } else {
-//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-//                return false;
-//            }
-//        } else {
-//            return true;
-//        }
-//    }
 }
 
