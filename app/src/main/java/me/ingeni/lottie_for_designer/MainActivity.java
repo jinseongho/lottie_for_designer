@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout mLlTestButtonControlLayout;
 
     private ActivityMainBinding mBinding;
+    private int mButtonWidth = (int) dpToPx(46);
+    private int mButtonHeight = (int) dpToPx(46);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,13 +142,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnTextChanged(R.id.test_button_width_edit)
-    public void onButtonWidthTextChagned(CharSequence s) {
-        onDrawTestButton(Integer.valueOf(s.toString()), Integer.valueOf(s.toString()));
+    public void onButtonWidthTextChanged(final CharSequence s) {
+        if (!TextUtils.isEmpty(s)) {
+            try {
+                mButtonWidth = Integer.valueOf(s.toString());
+                onDrawTestButton(mButtonWidth, mButtonHeight);
+            } catch (NumberFormatException e) {
+                mButtonWidth = (int) dpToPx(46);
+            }
+        }
     }
 
     @OnTextChanged(R.id.test_button_height_edit)
-    public void onButtonHeightTextChagned(CharSequence s) {
-        onDrawTestButton(Integer.valueOf(s.toString()), Integer.valueOf(s.toString()));
+    public void onButtonHeightTextChanged(CharSequence s) {
+        if (!TextUtils.isEmpty(s)) {
+            try {
+                mButtonHeight = Integer.valueOf(s.toString());
+                onDrawTestButton(mButtonWidth, mButtonHeight);
+            } catch (NumberFormatException e) {
+                mButtonHeight = (int) dpToPx(46);
+            }
+        }
     }
 
     private void onDrawTestButton(int width, int height) {
@@ -162,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
         gd.setStroke(2, Color.WHITE);
         buttonLView.setBackground(gd);
 
+        mAnimationView = new LottieAnimationView(MainActivity.this);
         buttonLView.addView(mAnimationView);
         mAnimationView.cancelAnimation();
         buttonLView.setOnClickListener(new View.OnClickListener() {
