@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 //                mRlRoot2.removeAllViews();
 //                mLlTestButtonControlLayout.setVisibility(View.GONE);
 //                mAnimationView = new LottieAnimationView(this);
-                break;
+                return true;
             }
 
             case R.id.menu_background: {
