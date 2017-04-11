@@ -77,9 +77,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             case R.id.menu_animation_preview: {
-//                mRlRoot2.removeAllViews();
-//                mLlTestButtonControlLayout.setVisibility(View.GONE);
-//                mAnimationView = new LottieAnimationView(this);
+                mRlRoot2.removeAllViews();
+                mLlTestButtonControlLayout.setVisibility(View.GONE);
                 break;
             }
 
