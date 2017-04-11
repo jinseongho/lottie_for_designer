@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_animation_preview: {
                 mRlRoot2.removeAllViews();
                 mLlTestButtonControlLayout.setVisibility(View.GONE);
-                break;
+                return true;
             }
 
             case R.id.menu_background: {
