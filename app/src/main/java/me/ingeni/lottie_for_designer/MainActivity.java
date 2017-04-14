@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -78,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.menu_animation_preview: {
                 mRlRoot2.removeAllViews();
+
+                RelativeLayout.LayoutParams rootParams =
+                        new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                rootParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+                mAnimationView = new LottieAnimationView(MainActivity.this);
+                mAnimationView.setLayoutParams(rootParams);
+                mRlRoot2.addView(mAnimationView);
                 mLlTestButtonControlLayout.setVisibility(View.GONE);
                 return true;
             }
