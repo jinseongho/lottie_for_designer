@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         buttonLView.setLayoutParams(buttonParams);
 
         GradientDrawable gd = new GradientDrawable();
-        gd.setColor(Color.RED);
+        gd.setColor(Color.GRAY);
         gd.setCornerRadius(10);
         gd.setStroke(2, Color.WHITE);
         buttonLView.setBackground(gd);
