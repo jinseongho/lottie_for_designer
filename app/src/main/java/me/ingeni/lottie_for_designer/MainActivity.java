@@ -179,6 +179,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void onDrawTestButtonColor(RelativeLayout buttonView) {
+        buttonView.setBackgroundColor(Color.parseColor("#ff0000"));
+    }
+
     private void onDrawTestButton(int width, int height) {
         mRlRoot2.removeAllViews();
         mLlTestButtonControlLayout.setVisibility(View.VISIBLE);
@@ -204,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
                 mAnimationView.loop(false);
             }
         });
+        onDrawTestButtonColor(buttonLView);
         mRlRoot2.addView(buttonLView);
     }
 
