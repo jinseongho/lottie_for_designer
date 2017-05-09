@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.button_control_layout)
     LinearLayout mLlTestButtonControlLayout;
 
+    private RelativeLayout mButtonLView;
     private ActivityMainBinding mBinding;
     private int mButtonWidth = (int) dpToPx(46);
     private int mButtonHeight = (int) dpToPx(46);
@@ -179,8 +180,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void onDrawTestButtonColor(RelativeLayout buttonView) {
-        buttonView.setBackgroundColor(Color.parseColor("#ff0000"));
+    @OnTextChanged(R.id.test_button_color_edit)
+    public void onButtonColorTextChanged(CharSequence s) {
+        if (!TextUtils.isEmpty(s)) {
+            onDrawTestButtonColor(mButtonLView, s.toString());
+        }
+    }
+
+    private void onDrawTestButtonColor(RelativeLayout buttonView, String hexValue) {
+        try {
+            buttonView.setBackgroundColor(Color.parseColor("#" + hexValue));
+        } catch (IllegalArgumentException e) {
+            //
+        }
     }
 
     private void onDrawTestButton(int width, int height) {
@@ -208,7 +220,8 @@ public class MainActivity extends AppCompatActivity {
                 mAnimationView.loop(false);
             }
         });
-        onDrawTestButtonColor(buttonLView);
+        mButtonLView = buttonLView;
+        onDrawTestButtonColor(buttonLView, "ff0000");
         mRlRoot2.addView(buttonLView);
     }
 
