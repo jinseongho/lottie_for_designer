@@ -97,7 +97,7 @@
 
                 <EditText
                     android:id="@+id/test_button_color_edit"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:hint="hex color value"
                     android:inputType="text"

@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -44,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
     LottieAnimationView mAnimationView;
     @BindView(R.id.button_control_layout)
     LinearLayout mLlTestButtonControlLayout;
+
+    @BindView(R.id.test_button_width_edit)
+    EditText mEtBtnWidth;
+    @BindView(R.id.test_button_height_edit)
+    EditText mEtBtnHeight;
+    @BindView(R.id.test_button_color_edit)
+    EditText mEtBtnColor;
 
     private RelativeLayout mButtonLView;
     private ActivityMainBinding mBinding;
@@ -74,7 +82,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             case R.id.menu_button_test: {
-                onDrawTestButton((int) dpToPx(46), (int) dpToPx(46));
+                int widthValue = !TextUtils.isEmpty(mEtBtnWidth.getText().toString()) ? Integer.parseInt(mEtBtnWidth.getText().toString()) : (int) dpToPx(46);
+                int heightValue = TextUtils.isEmpty(mEtBtnHeight.getText().toString()) ? Integer.parseInt(mEtBtnHeight.getText().toString()) : (int) dpToPx(46);
+                onDrawTestButton(widthValue, heightValue);
+                if (!TextUtils.isEmpty(mEtBtnColor.getText().toString())) {
+                    onDrawTestButtonColor(mButtonLView, mEtBtnColor.getText().toString());
+                }
                 return true;
             }
 
