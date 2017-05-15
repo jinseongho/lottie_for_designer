@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.test_button_color_edit)
     EditText mEtBtnColor;
 
-    private RelativeLayout mButtonLView;
+    private FrameLayout mButtonLView;
     private ActivityMainBinding mBinding;
     private int mButtonWidth = (int) dpToPx(46);
     private int mButtonHeight = (int) dpToPx(46);
@@ -200,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void onDrawTestButtonColor(RelativeLayout buttonView, String hexValue) {
+    private void onDrawTestButtonColor(FrameLayout buttonView, String hexValue) {
         try {
             buttonView.setBackgroundColor(Color.parseColor("#" + hexValue));
         } catch (IllegalArgumentException e) {
@@ -211,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
     private void onDrawTestButton(int width, int height) {
         mRlRoot2.removeAllViews();
         mLlTestButtonControlLayout.setVisibility(View.VISIBLE);
-        RelativeLayout buttonLView = new RelativeLayout(this);
+        RoundedCornerLayout buttonLView = new RoundedCornerLayout(this);
         RelativeLayout.LayoutParams buttonParams =
                 new RelativeLayout.LayoutParams(width, height);
         buttonParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
