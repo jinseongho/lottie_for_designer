@@ -53,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
     EditText mEtBtnHeight;
     @BindView(R.id.test_button_color_edit)
     EditText mEtBtnColor;
+    @BindView(R.id.test_button_radius_edit)
+    EditText mEtBtnRadius;
 
-    private FrameLayout mButtonLView;
+    private RoundedCornerLayout mButtonView;
     private ActivityMainBinding mBinding;
     private int mButtonWidth = (int) dpToPx(46);
     private int mButtonHeight = (int) dpToPx(46);
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 int heightValue = TextUtils.isEmpty(mEtBtnHeight.getText().toString()) ? Integer.parseInt(mEtBtnHeight.getText().toString()) : (int) dpToPx(46);
                 onDrawTestButton(widthValue, heightValue);
                 if (!TextUtils.isEmpty(mEtBtnColor.getText().toString())) {
-                    onDrawTestButtonColor(mButtonLView, mEtBtnColor.getText().toString());
+                    onDrawTestButtonColor(mButtonView, mEtBtnColor.getText().toString());
                 }
                 return true;
             }
@@ -197,11 +199,18 @@ public class MainActivity extends AppCompatActivity {
     @OnTextChanged(R.id.test_button_color_edit)
     public void onButtonColorTextChanged(CharSequence s) {
         if (!TextUtils.isEmpty(s)) {
-            onDrawTestButtonColor(mButtonLView, s.toString());
+            onDrawTestButtonColor(mButtonView, s.toString());
         }
     }
 
-    private void onDrawTestButtonColor(FrameLayout buttonView, String hexValue) {
+    @OnTextChanged(R.id.test_button_radius_edit)
+    public void onButtonRoundedTextChanged(CharSequence s) {
+        if (!TextUtils.isEmpty(s)) {
+            onDrawTestButtonRounded(mButtonView, Float.valueOf(s.toString()));
+        }
+    }
+
+    private void onDrawTestButtonColor(RoundedCornerLayout buttonView, String hexValue) {
         try {
             buttonView.setBackgroundColor(Color.parseColor("#" + hexValue));
         } catch (IllegalArgumentException e) {
@@ -234,9 +243,13 @@ public class MainActivity extends AppCompatActivity {
                 mAnimationView.loop(false);
             }
         });
-        mButtonLView = buttonLView;
+        mButtonView = buttonLView;
         onDrawTestButtonColor(buttonLView, "ff0000");
         mRlRoot2.addView(buttonLView);
+    }
+
+    private void onDrawTestButtonRounded(RoundedCornerLayout roundedCornerLayout, float value) {
+        roundedCornerLayout.setCornerRadius(value);
     }
 
     private float dpToPx(float dp) {

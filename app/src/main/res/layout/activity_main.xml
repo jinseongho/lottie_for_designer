@@ -108,6 +108,30 @@
                     android:textSize="12dp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="button corner radius :"
+                    android:textColor="@color/colorAccent" />
+
+                <EditText
+                    android:id="@+id/test_button_radius_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="corner radius value"
+                    android:inputType="text"
+                    android:maxLength="6"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <TextView
