@@ -81,8 +81,4 @@ public class RoundedCornerLayout extends FrameLayout {
 
         return mask;
     }
-
-    public void setCornerRadius(float cornerRadius) {
-        CORNER_RADIUS = cornerRadius;
-    }
 }

@@ -252,7 +252,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onDrawTestButtonRounded(int width, int height, float value) {
-//        roundedCornerLayout.setCornerRadius(value);
         onDrawTestButton(width, height, value);
     }
 
