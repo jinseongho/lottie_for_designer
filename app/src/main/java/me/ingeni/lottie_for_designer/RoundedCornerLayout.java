@@ -24,8 +24,9 @@ public class RoundedCornerLayout extends FrameLayout {
     private Paint paint, maskPaint;
     private float cornerRadius;
 
-    public RoundedCornerLayout(Context context) {
+    public RoundedCornerLayout(Context context, float radius) {
         super(context);
+        CORNER_RADIUS = radius;
         init(context, null, 0);
     }
 

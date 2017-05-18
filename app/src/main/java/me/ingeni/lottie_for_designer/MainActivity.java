@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mBinding;
     private int mButtonWidth = (int) dpToPx(46);
     private int mButtonHeight = (int) dpToPx(46);
+    private float mButtonRadius = 40.0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
             }
             case R.id.menu_button_test: {
                 int widthValue = !TextUtils.isEmpty(mEtBtnWidth.getText().toString()) ? Integer.parseInt(mEtBtnWidth.getText().toString()) : (int) dpToPx(46);
-                int heightValue = TextUtils.isEmpty(mEtBtnHeight.getText().toString()) ? Integer.parseInt(mEtBtnHeight.getText().toString()) : (int) dpToPx(46);
-                onDrawTestButton(widthValue, heightValue);
+                int heightValue = !TextUtils.isEmpty(mEtBtnHeight.getText().toString()) ? Integer.parseInt(mEtBtnHeight.getText().toString()) : (int) dpToPx(46);
+                float radius = !TextUtils.isEmpty(mEtBtnRadius.getText().toString()) ? Float.parseFloat(mEtBtnRadius.getText().toString()) : 40.0f;
+                onDrawTestButton(widthValue, heightValue, radius);
                 if (!TextUtils.isEmpty(mEtBtnColor.getText().toString())) {
                     onDrawTestButtonColor(mButtonView, mEtBtnColor.getText().toString());
                 }
@@ -177,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(s)) {
             try {
                 mButtonWidth = Integer.valueOf(s.toString());
-                onDrawTestButton(mButtonWidth, mButtonHeight);
+                onDrawTestButton(mButtonWidth, mButtonHeight, mButtonRadius);
             } catch (NumberFormatException e) {
                 mButtonWidth = (int) dpToPx(46);
             }
@@ -189,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(s)) {
             try {
                 mButtonHeight = Integer.valueOf(s.toString());
-                onDrawTestButton(mButtonWidth, mButtonHeight);
+                onDrawTestButton(mButtonWidth, mButtonHeight, mButtonRadius);
             } catch (NumberFormatException e) {
                 mButtonHeight = (int) dpToPx(46);
             }
@@ -206,7 +208,8 @@ public class MainActivity extends AppCompatActivity {
     @OnTextChanged(R.id.test_button_radius_edit)
     public void onButtonRoundedTextChanged(CharSequence s) {
         if (!TextUtils.isEmpty(s)) {
-            onDrawTestButtonRounded(mButtonView, Float.valueOf(s.toString()));
+            mButtonRadius = Float.valueOf(s.toString());
+            onDrawTestButtonRounded(mButtonWidth, mButtonHeight, mButtonRadius);
         }
     }
 
@@ -218,10 +221,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void onDrawTestButton(int width, int height) {
+    private void onDrawTestButton(int width, int height, float radius) {
         mRlRoot2.removeAllViews();
         mLlTestButtonControlLayout.setVisibility(View.VISIBLE);
-        RoundedCornerLayout buttonLView = new RoundedCornerLayout(this);
+        RoundedCornerLayout buttonLView = new RoundedCornerLayout(this, radius);
         RelativeLayout.LayoutParams buttonParams =
                 new RelativeLayout.LayoutParams(width, height);
         buttonParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
@@ -248,8 +251,9 @@ public class MainActivity extends AppCompatActivity {
         mRlRoot2.addView(buttonLView);
     }
 
-    private void onDrawTestButtonRounded(RoundedCornerLayout roundedCornerLayout, float value) {
-        roundedCornerLayout.setCornerRadius(value);
+    private void onDrawTestButtonRounded(int width, int height, float value) {
+//        roundedCornerLayout.setCornerRadius(value);
+        onDrawTestButton(width, height, value);
     }
 
     private float dpToPx(float dp) {
