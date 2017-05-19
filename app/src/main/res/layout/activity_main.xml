@@ -124,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:hint="corner radius value"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:maxLength="6"
                     android:paddingLeft="10dp"
                     android:textColor="@color/colorAccent"
