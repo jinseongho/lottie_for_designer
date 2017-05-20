@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="lottie-2.0.0-rc1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/8abf2a6381741e593f9047f56c0c23a61bb5dd1f/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/8abf2a6381741e593f9047f56c0c23a61bb5dd1f/output/res" />
+      <root url="file://$USER_HOME$/.android/build-cache/55b90c1e8767d4aaae5b22fc2ffbf392c155e20d/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/55b90c1e8767d4aaae5b22fc2ffbf392c155e20d/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
