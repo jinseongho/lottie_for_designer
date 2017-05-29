@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -30,6 +31,7 @@ import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import me.ingeni.lottie_for_designer.databinding.ActivityMainBinding;
 
@@ -54,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
     EditText mEtBtnColor;
     @BindView(R.id.test_button_radius_edit)
     EditText mEtBtnRadius;
+
+    @BindView(R.id.btn_bg)
+    Button mBtnBg;
+    @BindView(R.id.btn_play)
+    Button mBtnPlay;
+    @BindView(R.id.btn_stop)
+    Button mBtnStop;
 
     private RoundedCornerLayout mButtonView;
     private ActivityMainBinding mBinding;
@@ -257,5 +266,18 @@ public class MainActivity extends AppCompatActivity {
     private float dpToPx(float dp) {
         return dp * Resources.getSystem().getDisplayMetrics().density;
     }
+
+    @OnClick({R.id.btn_bg, R.id.btn_play, R.id.btn_stop})
+    public void OnClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_bg:
+                break;
+            case R.id.btn_play:
+                break;
+            case R.id.btn_stop:
+                break;
+        }
+    }
+
 }
 
