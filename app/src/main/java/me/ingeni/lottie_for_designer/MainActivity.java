@@ -117,11 +117,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
 
-            case R.id.menu_background: {
-                mRlRoot.setSelected(!mRlRoot.isSelected());
-                mRlRoot.setBackground(ContextCompat.getDrawable(this, mRlRoot.isSelected() ? android.R.color.white : android.R.color.black));
-                return true;
-            }
+//            case R.id.menu_background: {
+//                mRlRoot.setSelected(!mRlRoot.isSelected());
+//                mRlRoot.setBackground(ContextCompat.getDrawable(this, mRlRoot.isSelected() ? android.R.color.white : android.R.color.black));
+//                return true;
+//            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -271,6 +271,8 @@ public class MainActivity extends AppCompatActivity {
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.btn_bg:
+                mRlRoot.setSelected(!mRlRoot.isSelected());
+                mRlRoot.setBackground(ContextCompat.getDrawable(this, mRlRoot.isSelected() ? android.R.color.white : android.R.color.black));
                 break;
             case R.id.btn_play:
                 break;
