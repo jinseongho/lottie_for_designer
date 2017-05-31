@@ -275,8 +275,17 @@ public class MainActivity extends AppCompatActivity {
                 mRlRoot.setBackground(ContextCompat.getDrawable(this, mRlRoot.isSelected() ? android.R.color.white : android.R.color.black));
                 break;
             case R.id.btn_play:
+                if (mAnimationView.isAnimating()) {
+                    mAnimationView.pauseAnimation();
+                } else {
+//                    if (mAnimationView.getProgress() == 1f) {
+//                        mAnimationView.setProgress(0f);
+//                    }
+                    mAnimationView.resumeAnimation();
+                }
                 break;
             case R.id.btn_stop:
+                mAnimationView.cancelAnimation();
                 break;
         }
     }
