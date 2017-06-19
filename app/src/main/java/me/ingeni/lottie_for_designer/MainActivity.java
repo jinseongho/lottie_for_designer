@@ -1,5 +1,6 @@
 package me.ingeni.lottie_for_designer;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -35,7 +36,7 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import me.ingeni.lottie_for_designer.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private final int REQUEST_FILE = 1004;
 

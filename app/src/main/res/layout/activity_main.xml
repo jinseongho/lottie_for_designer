@@ -141,21 +141,21 @@
 
             <Button
                 android:id="@+id/btn_bg"
-                android:layout_width="48dp"
+                android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="W/B" />
 
             <Button
                 android:id="@+id/btn_play"
-                android:layout_width="48dp"
+                android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="play" />
 
             <Button
                 android:id="@+id/btn_stop"
-                android:layout_width="48dp"
+                android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:text="play" />
+                android:text="stop" />
 
         </LinearLayout>
 
