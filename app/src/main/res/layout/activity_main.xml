@@ -157,6 +157,12 @@
                 android:layout_height="48dp"
                 android:text="stop" />
 
+            <Button
+                android:id="@+id/choose_file"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="choose file" />
+
         </LinearLayout>
 
         <TextView

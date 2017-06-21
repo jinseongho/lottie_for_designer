@@ -64,6 +64,8 @@ public class MainActivity extends Activity {
     Button mBtnPlay;
     @BindView(R.id.btn_stop)
     Button mBtnStop;
+    @BindView(R.id.choose_file)
+    Button mBtnChooseFile;
 
     private RoundedCornerLayout mButtonView;
     private ActivityMainBinding mBinding;
@@ -87,13 +89,6 @@ public class MainActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_upload: {
-                Intent importFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                importFileIntent.setType("*/*");
-                importFileIntent.addCategory(Intent.CATEGORY_OPENABLE);
-                startActivityForResult(importFileIntent, REQUEST_FILE);
-                return true;
-            }
             case R.id.menu_button_test: {
                 int widthValue = !TextUtils.isEmpty(mEtBtnWidth.getText().toString()) ? Integer.parseInt(mEtBtnWidth.getText().toString()) : (int) dpToPx(46);
                 int heightValue = !TextUtils.isEmpty(mEtBtnHeight.getText().toString()) ? Integer.parseInt(mEtBtnHeight.getText().toString()) : (int) dpToPx(46);
@@ -287,6 +282,12 @@ public class MainActivity extends Activity {
                 break;
             case R.id.btn_stop:
                 mAnimationView.cancelAnimation();
+                break;
+            case R.id.choose_file:
+                Intent importFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                importFileIntent.setType("*/*");
+                importFileIntent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(importFileIntent, REQUEST_FILE);
                 break;
         }
     }
