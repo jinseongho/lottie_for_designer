@@ -263,7 +263,7 @@ public class MainActivity extends Activity {
         return dp * Resources.getSystem().getDisplayMetrics().density;
     }
 
-    @OnClick({R.id.btn_bg, R.id.btn_play, R.id.btn_stop})
+    @OnClick({R.id.btn_bg, R.id.btn_play, R.id.btn_stop, R.id.choose_file})
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.btn_bg:
