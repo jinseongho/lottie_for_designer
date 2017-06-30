@@ -10,14 +10,13 @@ import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -58,14 +57,14 @@ public class MainActivity extends Activity {
     @BindView(R.id.test_button_radius_edit)
     EditText mEtBtnRadius;
 
-    @BindView(R.id.btn_bg)
-    Button mBtnBg;
-    @BindView(R.id.btn_play)
-    Button mBtnPlay;
-    @BindView(R.id.btn_stop)
-    Button mBtnStop;
-    @BindView(R.id.choose_file)
-    Button mBtnChooseFile;
+//    @BindView(R.id.btn_bg)
+//    Button mBtnBg;
+//    @BindView(R.id.btn_play)
+//    Button mBtnPlay;
+//    @BindView(R.id.btn_stop)
+//    Button mBtnStop;
+//    @BindView(R.id.choose_file)
+//    Button mBtnChooseFile;
 
     private RoundedCornerLayout mButtonView;
     private ActivityMainBinding mBinding;
@@ -263,7 +262,7 @@ public class MainActivity extends Activity {
         return dp * Resources.getSystem().getDisplayMetrics().density;
     }
 
-    @OnClick({R.id.btn_bg, R.id.btn_play, R.id.btn_stop, R.id.choose_file})
+    @OnClick({R.id.btn_bg, R.id.btn_play, R.id.btn_stop, R.id.choose_file, R.id.example_file})
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.btn_bg:
@@ -289,7 +288,26 @@ public class MainActivity extends Activity {
                 importFileIntent.addCategory(Intent.CATEGORY_OPENABLE);
                 startActivityForResult(importFileIntent, REQUEST_FILE);
                 break;
+            case R.id.example_file:
+                LottieComposition.Factory.fromAssetFileName(this, "star.json",
+                        new OnCompositionLoadedListener() {
+                            @Override
+                            public void onCompositionLoaded(@Nullable LottieComposition composition) {
+                                if (composition == null) {
+                                    return;
+                                }
+                                setComposition(composition);
+                            }
+                        });
+                break;
         }
+    }
+
+    private void setComposition(LottieComposition composition, String name) {
+        if (composition.hasImages() && TextUtils.isEmpty(mAnimationView.getImageAssetsFolder())) {
+            return;
+        }
+        mAnimationView.setComposition(composition);
     }
 
 }

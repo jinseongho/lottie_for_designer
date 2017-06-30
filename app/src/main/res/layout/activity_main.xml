@@ -137,31 +137,48 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_bg"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="W/B" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btn_play"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="play" />
+                <Button
+                    android:id="@+id/btn_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="W/B" />
 
-            <Button
-                android:id="@+id/btn_stop"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="stop" />
+                <Button
+                    android:id="@+id/btn_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="play" />
 
-            <Button
-                android:id="@+id/choose_file"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="choose file" />
+                <Button
+                    android:id="@+id/btn_stop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="stop" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/choose_file"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="choose file" />
+
+                <Button
+                    android:id="@+id/example_file"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="example file" />
+            </LinearLayout>
 
         </LinearLayout>
 
