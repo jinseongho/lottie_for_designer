@@ -302,13 +302,5 @@ public class MainActivity extends Activity {
                 break;
         }
     }
-
-    private void setComposition(LottieComposition composition, String name) {
-        if (composition.hasImages() && TextUtils.isEmpty(mAnimationView.getImageAssetsFolder())) {
-            return;
-        }
-        mAnimationView.setComposition(composition);
-    }
-
 }
 
