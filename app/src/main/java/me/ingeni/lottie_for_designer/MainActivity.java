@@ -87,37 +87,37 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_button_test: {
-                int widthValue = !TextUtils.isEmpty(mEtBtnWidth.getText().toString()) ? Integer.parseInt(mEtBtnWidth.getText().toString()) : (int) dpToPx(46);
-                int heightValue = !TextUtils.isEmpty(mEtBtnHeight.getText().toString()) ? Integer.parseInt(mEtBtnHeight.getText().toString()) : (int) dpToPx(46);
-                float radius = !TextUtils.isEmpty(mEtBtnRadius.getText().toString()) ? Float.parseFloat(mEtBtnRadius.getText().toString()) : 40.0f;
-                onDrawTestButton(widthValue, heightValue, radius);
-                if (!TextUtils.isEmpty(mEtBtnColor.getText().toString())) {
-                    onDrawTestButtonColor(mButtonView, mEtBtnColor.getText().toString());
-                }
-                return true;
-            }
-
-            case R.id.menu_animation_preview: {
-                mRlRoot2.removeAllViews();
-
-                RelativeLayout.LayoutParams rootParams =
-                        new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                rootParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-                mAnimationView = new LottieAnimationView(MainActivity.this);
-                mAnimationView.setLayoutParams(rootParams);
-                mRlRoot2.addView(mAnimationView);
-                mLlTestButtonControlLayout.setVisibility(View.GONE);
-                return true;
-            }
+//        switch (item.getItemId()) {
+//            case R.id.menu_button_test: {
+//                int widthValue = !TextUtils.isEmpty(mEtBtnWidth.getText().toString()) ? Integer.parseInt(mEtBtnWidth.getText().toString()) : (int) dpToPx(46);
+//                int heightValue = !TextUtils.isEmpty(mEtBtnHeight.getText().toString()) ? Integer.parseInt(mEtBtnHeight.getText().toString()) : (int) dpToPx(46);
+//                float radius = !TextUtils.isEmpty(mEtBtnRadius.getText().toString()) ? Float.parseFloat(mEtBtnRadius.getText().toString()) : 40.0f;
+//                onDrawTestButton(widthValue, heightValue, radius);
+//                if (!TextUtils.isEmpty(mEtBtnColor.getText().toString())) {
+//                    onDrawTestButtonColor(mButtonView, mEtBtnColor.getText().toString());
+//                }
+//                return true;
+//            }
+//
+//            case R.id.menu_animation_preview: {
+//                mRlRoot2.removeAllViews();
+//
+//                RelativeLayout.LayoutParams rootParams =
+//                        new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//                rootParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+//                mAnimationView = new LottieAnimationView(MainActivity.this);
+//                mAnimationView.setLayoutParams(rootParams);
+//                mRlRoot2.addView(mAnimationView);
+//                mLlTestButtonControlLayout.setVisibility(View.GONE);
+//                return true;
+//            }
 
 //            case R.id.menu_background: {
 //                mRlRoot.setSelected(!mRlRoot.isSelected());
 //                mRlRoot.setBackground(ContextCompat.getDrawable(this, mRlRoot.isSelected() ? android.R.color.white : android.R.color.black));
 //                return true;
 //            }
-        }
+//        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -262,9 +262,28 @@ public class MainActivity extends Activity {
         return dp * Resources.getSystem().getDisplayMetrics().density;
     }
 
-    @OnClick({R.id.btn_bg, R.id.btn_play, R.id.btn_stop, R.id.choose_file, R.id.example_file})
+    @OnClick({R.id.btn_animation, R.id.btn_test, R.id.btn_bg, R.id.btn_play, R.id.btn_stop, R.id.choose_file, R.id.example_file})
     public void OnClick(View view) {
         switch (view.getId()) {
+            case R.id.btn_animation:
+                mRlRoot2.removeAllViews();
+                RelativeLayout.LayoutParams rootParams =
+                        new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                rootParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+                mAnimationView = new LottieAnimationView(MainActivity.this);
+                mAnimationView.setLayoutParams(rootParams);
+                mRlRoot2.addView(mAnimationView);
+                mLlTestButtonControlLayout.setVisibility(View.GONE);
+                break;
+            case R.id.btn_test:
+                int widthValue = !TextUtils.isEmpty(mEtBtnWidth.getText().toString()) ? Integer.parseInt(mEtBtnWidth.getText().toString()) : (int) dpToPx(46);
+                int heightValue = !TextUtils.isEmpty(mEtBtnHeight.getText().toString()) ? Integer.parseInt(mEtBtnHeight.getText().toString()) : (int) dpToPx(46);
+                float radius = !TextUtils.isEmpty(mEtBtnRadius.getText().toString()) ? Float.parseFloat(mEtBtnRadius.getText().toString()) : 40.0f;
+                onDrawTestButton(widthValue, heightValue, radius);
+                if (!TextUtils.isEmpty(mEtBtnColor.getText().toString())) {
+                    onDrawTestButtonColor(mButtonView, mEtBtnColor.getText().toString());
+                }
+                break;
             case R.id.btn_bg:
                 mRlRoot.setSelected(!mRlRoot.isSelected());
                 mRlRoot.setBackground(ContextCompat.getDrawable(this, mRlRoot.isSelected() ? android.R.color.white : android.R.color.black));
